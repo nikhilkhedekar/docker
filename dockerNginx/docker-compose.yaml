@@ -1,0 +1,39 @@
+version: "3.8"
+
+services: 
+  
+  mongo_first_nw:
+      image: 'mongo'
+      volumes:
+        - data:/data/db     
+
+  node:
+    build:
+      context: .
+      dockerfile: dockerfiles/node.dockerfile
+    ports: 
+      - '8080:8080'
+    volumes:
+      - ./src/logs:/var/www/html/src/logs
+      - ./src:/var/www/html
+      - /var/www/html/node_modules
+    depends_on:
+      - mongo_first_nw
+
+  server:    
+    restart: always
+    build:
+      context: .
+      dockerfile: dockerfiles/nginx.dockerfile
+    ports: 
+      - '8000:8000'
+    volumes: 
+      - ./src:/var/www/html
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on: 
+      - node
+      # - mongo_first_nw
+       
+
+volumes:
+  data:
