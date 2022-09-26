@@ -1,14 +1,14 @@
 FROM node
 
-WORKDIR /var/www/html
+WORKDIR /var/www/dockerNginx
 
-COPY src/package.json /var/www/html
+COPY src/package.json /var/www/dockerNginx
 #src/package.json .
 
 RUN npm i
 # npm i && npm cache clean --force
 
-COPY src /var/www/html
+COPY src /var/www/dockerNginx
 #src .
 
 EXPOSE 8080

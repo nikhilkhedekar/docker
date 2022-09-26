@@ -1,0 +1,6 @@
+::1 - - [25/Sep/2022:12:00:57 +0000] "GET / HTTP/1.1" 200 12 "-" "PostmanRuntime/7.29.2"
+::1 - - [25/Sep/2022:12:01:08 +0000] "GET /goals HTTP/1.1" 200 171 "-" "PostmanRuntime/7.29.2"
+::1 - - [25/Sep/2022:12:02:39 +0000] "POST /goals HTTP/1.1" 201 88 "-" "PostmanRuntime/7.29.2"
+::1 - - [26/Sep/2022:04:04:30 +0000] "GET / HTTP/1.1" 200 12 "-" "PostmanRuntime/7.29.2"
+::1 - - [26/Sep/2022:04:04:35 +0000] "GET /goals HTTP/1.1" 200 228 "-" "PostmanRuntime/7.29.2"
+::1 - - [26/Sep/2022:04:05:00 +0000] "POST /goals HTTP/1.1" 201 84 "-" "PostmanRuntime/7.29.2"

@@ -9,7 +9,7 @@ COPY nginx/nginx.conf /etc/nginx/
 
 # CMD [ "nginx" "-s" "reload" ] instead of this we are restarting server in docker-compose
 
-WORKDIR /var/www/html
+WORKDIR /var/www/dockerNginx
 
-COPY src /var/www/html
+COPY src /var/www/dockerNginx
 #src .

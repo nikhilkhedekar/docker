@@ -14,9 +14,9 @@ services:
     ports: 
       - '8080:8080'
     volumes:
-      - ./src/logs:/var/www/html/src/logs
-      - ./src:/var/www/html
-      - /var/www/html/node_modules
+      - ./src/logs:/var/www/dockerNginx/src/logs
+      - ./src:/var/www/dockerNginx
+      - /var/www/dockerNginx/node_modules
     depends_on:
       - mongo_first_nw
 
@@ -28,8 +28,8 @@ services:
     ports: 
       - '8000:8000'
     volumes: 
-      - ./src:/var/www/html
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./src:/var/www/dockerNginx      
     depends_on: 
       - node
       # - mongo_first_nw
