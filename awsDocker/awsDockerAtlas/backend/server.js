@@ -4,6 +4,7 @@ const exists = require('fs').exists;
 const path = require('path');
 const mongoose = require("mongoose");
 const morgan = require('morgan');
+const cors = require('cors');
 
 const Goal = require('./schema/goals');
 
@@ -14,18 +15,14 @@ const accessLogStream = fs.createWriteStream(
   { flags: 'a' }
 );
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('combined', { stream: accessLogStream }));
 
-// mongoose.connect("mongodb+srv://Dhungel:Dhungel@awsdhungel.oevqe.mongodb.net/AWSDhungel?retryWrites=true&w=majority").catch(error => 
-// console.log(error));
-mongoose.connect("mongodb://127.0.0.1:27017/swapiFav?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.5.4");
-//--network mongo_nw
-//--name mongo_first_nw = mongo%5Ffirst%5Fnw 
-// mongoose.connect("mongodb://mongo%5Ffirst%5Fnw:27017/swapiFav?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.5.4");
+mongoose.connect("mongodb+srv://Dhungel:Dhungel@awsdhungel.oevqe.mongodb.net/AWSDhungel?retryWrites=true&w=majority");
 
-// goalsApp-LB-837701114.ap-south-1.elb.amazonaws.com
+//goals-app-LB-996122569.ap-south-1.elb.amazonaws.com
 app.get('/goals', async (req, res) => {
   console.log('TRYING TO FETCH GOALS');
   try {

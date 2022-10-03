@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  mongo_first_nw:
+    image: "mongo"
+    volumes:
+      - data:/data/db
+
+  backend:
+    restart: always
+    build:
+      context: .
+      dockerfile: /node.dockerfile
+    ports: 
+      - "8080:8080"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    depends_on:
+      - mongo_first_nw
+      
+volumes:
+  data:
